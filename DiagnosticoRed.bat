@@ -9,7 +9,9 @@ echo 4. Monitoreo continuo
 echo 5. Definir cantidad de paquetes
 echo 6. Prueba de carga
 echo 7.Resolucion de nombres
-echo 8.Salir
+echo 8.Ruta de los paquetes
+echo 9.Traducir direccion ip
+echo 10.Salir
 echo.
 set /p opcion=Elige una opcion (1-7):
 IF %opcion%==1 goto Verificacion
@@ -19,7 +21,9 @@ IF %opcion%==4 goto Monitoreo
 IF %opcion%==5 goto Definir
 IF %opcion%==6 goto Prueba_carga
 IF %opcion%==7 goto Resolucion
-IF %opcion%==8 exit
+IF %opcion%==8 goto Ruta
+IF %opcion%==9 goto Traduccion
+IF %opcion%==10 exit
 
 goto Menu
 
@@ -67,5 +71,20 @@ set /p direccion=Escribe la direccion ip
 ping -a %direccion%
 PAUSE
 goto Menu
+
+:Traduccion
+echo.
+set /p direccion=Escribe la direccion ip
+nslookup %direccion%
+PAUSE
+goto Menu
+
+:Ruta
+echo.
+set /p direccion=escibir la direccion ip
+tracert %direccion%
+PAUSE
+goto Menu
+
 
 PAUSE >
